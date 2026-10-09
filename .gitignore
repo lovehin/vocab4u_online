@@ -1,0 +1,36 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# 上游原始数据（build/取数据.py 拉取，体积大，不进仓库）
+build/_raw/
+
+# 生成缓存（本地跑 gen.py 会自动生成，用来判断页面正文有没有真的改过）
+build/.生成状态.json
+
+# 生成物：上线时现生成，不进仓库
+/w/
+/list/
+/roots/
+/guide/
+/letter/
+roots.html
+learn.html
+index.html
+404.html
+about.html
+privacy.html
+sitemap.xml
+robots.txt
+llms.txt
+manifest.webmanifest
+sw.js
+assets/version.js
+data/words/
+/data/index.json
+
+# 站长平台推送凭据
+scripts/.*token.txt
+scripts/.百度推送token.txt
+scripts/.百度已推送.txt
+scripts/.必应已推送.txt

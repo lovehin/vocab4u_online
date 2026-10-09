@@ -1,0 +1,13 @@
+# Cloudflare 跳转规则
+#
+# ⚠️ 不要写 "/xxx → /xxx.html" 这类规则！
+# Cloudflare 会自动把 /xxx.html 归一成 /xxx，两边互相指就会无限重定向，
+# 表现为「重定向次数过多」打不开页面。
+# 无后缀地址（/learn、/about、/w/abandon）会自动对应同名 .html，不用手写规则。
+
+# 顺手记住的别名
+/book/:slug      /list/:slug      301
+/words/:slug     /w/:slug         301
+/word/:slug      /w/:slug         301
+/dict            /list           301
+/learn/          /learn           301

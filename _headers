@@ -1,0 +1,44 @@
+# Cloudflare 响应头（由本文件控制，改完重新上传即可）
+#
+# ⚠️ 样式和脚本都带 ?v=N 版本号（见 build/gen.py 的 V），所以可以长期缓存；
+#    改过 assets/ 下的文件后把 V 加 1 再重新生成，访客才会拿到新版。
+# ⚠️ 本站会用到这几个外部域名，漏一个就会「静默失败」：
+#     https://suilang.net          页脚的收款码图片
+#     https://dict.youdao.com      单词真人发音音频
+#     https://hm.baidu.com         百度统计
+#     https://static.cloudflareinsights.com  Cloudflare 统计
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/og/*
+  Cache-Control: public, max-age=604800
+
+/icons/*
+  Cache-Control: public, max-age=604800
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/sw.js
+  Cache-Control: no-cache
+  Content-Type: application/javascript; charset=utf-8
+
+/sitemap.xml
+  # 加页面之后重新提交 sitemap，搜索引擎要立刻拿到最新版，不能吃缓存
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400
+  Content-Type: application/manifest+json
+
+/data/words/*
+  Cache-Control: public, max-age=604800
+
+/*
+  Cache-Control: public, max-age=300, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: blob: https://suilang.net https://hm.baidu.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://hm.baidu.com; connect-src 'self' https://cloudflareinsights.com https://hm.baidu.com; media-src 'self' https://dict.youdao.com blob:; font-src 'self' data:; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'

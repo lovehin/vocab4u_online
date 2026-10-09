@@ -1,0 +1,18 @@
+# 只影响「上传到 Cloudflare 的内容」，不影响本地、也不影响 Git。
+.git
+.gitignore
+.assetsignore
+.wrangler
+build
+docs
+scripts
+README.md
+AGENTS.md
+*.command
+wrangler.jsonc
+.DS_Store
+__pycache__
+# 生成器用的整包数据 23MB，浏览器用不到（学习器读的是 data/words/ 下的分片）
+data/dictionary.json
+# ⚠️ 千万别写 *.txt —— 会连带排除掉 robots.txt 和站长平台给的
+#    xxxx.txt 验证文件，验证和收录会一起坏掉。本地笔记按文件名单独列。

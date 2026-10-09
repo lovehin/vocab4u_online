@@ -1,0 +1,21 @@
+{
+  // Cloudflare 部署配置（线上地址：vocab4u.suilang.net）
+  // ⚠️ name 必须和线上那个 Worker 名一模一样：写错不会报错，
+  //    只会默默传到另一个新 Worker 上，线上页面永远不变。
+  // 双击 scripts/重新上线.command 会先重新生成页面，再上传本目录。
+  "name": "vocab4u-suilang",
+  "compatibility_date": "2026-09-28",
+
+  "assets": {
+    "directory": ".",
+    // 无后缀地址（/learn、/w/abandon、/list/cet4）自动对应同名 .html / index.html
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+
+  // 自定义域：第一次部署时 Cloudflare 会自动建好 DNS 记录和证书。
+  // ⚠️ 在 Cloudflare 上删掉这个自定义域会连带删掉随它创建的 DNS 记录，动手前想清楚。
+  "routes": [
+    { "pattern": "vocab4u.suilang.net", "custom_domain": true }
+  ]
+}
